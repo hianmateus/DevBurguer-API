@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import multer from 'multer'
 import multerConfig from './config/multer'
+import authMiddleware from './middlewares/auth'
 
 import UserController from './app/controllers/UserController'
 import SessionController from './app/controllers/SessionController'
@@ -9,6 +10,8 @@ import ProductController from './app/controllers/ProductController'
 const routes = new Router()
 
 const upload = multer(multerConfig)
+
+routes.use(authMiddleware)
 
 routes.post('/users', UserController.store)
 routes.post('/session', SessionController.store)
