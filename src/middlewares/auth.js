@@ -19,11 +19,13 @@ function authMiddleware(request, response, next) {
       request.userId = decoded.id
 
       console.log(decoded)
-      return next()
+      
     })
   } catch (err) {
     return response.status(401).json({ error: 'Token is invalid' })
   }
+
+  return next()
 }
 
 export default authMiddleware
