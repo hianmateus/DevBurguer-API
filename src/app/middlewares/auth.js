@@ -17,7 +17,7 @@ function authMiddleware(request, response, next) {
       }
 
       request.userId = decoded.id
-      request.username = decoded.name
+      request.userName = decoded.name
 
       console.log(decoded)
       
